@@ -23,7 +23,7 @@ db.authenticate()
   .catch(err => console.log(err))
 
  
-
+/********************** LISTEN SERVER *****************************/ 
 //start listing
 const PORT = 9000;
 app.listen(PORT, () => {
