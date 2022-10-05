@@ -13,10 +13,16 @@ app.get('/', (req, res) => {
 })
 
 
+/********************** DATABASE ********************************/
+//import database conections
+const db = require('./utils/database')
 
+//DB Authetication with info in ./database
+db.authenticate()
+  .then(() => console.log('DB Authetication Succesfull y'))
+  .catch(err => console.log(err))
 
-
-
+ 
 
 //start listing
 const PORT = 9000;
