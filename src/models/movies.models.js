@@ -5,6 +5,7 @@ const {DataTypes} = require ('sequelize')
 const db = require('../utils/database')
 
 const Movies = db.define('movies', {
+    
     id: {
         primaryKey: true,
         type: DataTypes.UUID,
@@ -23,7 +24,7 @@ const Movies = db.define('movies', {
         allowNull: false
     },
     releaseDate: {
-        tyoe: DataTypes.DATEONLY,
+        type: DataTypes.DATEONLY,
         allowNull: false,
         field: 'release_date'
     }

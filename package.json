@@ -10,12 +10,17 @@
   },
   "keywords": [
     "express",
-    "nodemon",
-    "uuid"
+    "-D nodemon",
+    "sequelize",
+    "pg pg-hstore",
+    "uuid",
+    "dotenv"
+
   ],
   "author": "jesuschock93",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
