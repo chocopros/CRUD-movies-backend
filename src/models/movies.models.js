@@ -12,11 +12,11 @@ const Movies = db.define('movies', {
         allowNull: false
     },
     name: {
-        type: DataTypes.STRING(10),
+        type: DataTypes.STRING,
         allowNull: false
     },
     genre: {
-        type: DataTypes.STRING(10),
+        type: DataTypes.STRING,
         allowNull: false
     },
     duration: {
