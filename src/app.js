@@ -30,7 +30,7 @@ db.authenticate()
 
 //2-second Sycronyzate the models and create the tables
 db.sync()
-  .then( () => console.log('Database synced'))
+  .then( () => console.log('synchronized database'))
   .catch( err => console.log(err))
 
 initModels()
