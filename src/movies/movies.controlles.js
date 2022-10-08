@@ -1,24 +1,26 @@
 //generator uuid
+const { where } = require('sequelize')
 const uuid = require('uuid')
 
 //imports movies models for to make requests
 const Movies = require('../models/movies.models')
 
+ //? select * from movies
 const getAllMovies = async () => {
 
-  //? select * from movies
   const data = await Movies.findAll() // get all movies
 
   return data
 }
 
 
-// console.log(getAllMovies()
+// getAllMovies()
 //   .then(res => console.log(res))
-//   .catch(err => console.log(err)))
+//   .catch(err => console.log(err))
 // // Test --> node ./src/movies/movies.controlles.js
 
 
+/***************** CREATE FILM IN DATABASE *****************/
 // insert into movies (id,name,denre, duration, release Data) values (uuid.v4, data.name , etc)
 const createMovie = async (data) => {
 
@@ -31,17 +33,34 @@ const createMovie = async (data) => {
     releaseDate: data.releaseDate
   })
   return newMovie
-
 }
-// TEST CREATE FILM
 
-createMovie(
-  {
-    name: 'Blade II',
-    genre: 'Action',
-    duration: 117,
-    releaseDate: '2002/03/12'
-  }
-)
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
+// TEST CREATE FILM
+// createMovie(
+//   {
+//     name: 'Blade II',
+//     genre: 'Action',
+//     duration: 117,
+//     releaseDate: '2002/03/12'
+//   }
+// )
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err))
+
+
+
+/***************** GET MOVIE BY ID OR OTHER *****************/
+//Select * from movies where id = id;
+const getMovieById = async (genre) => {
+  const data = await Movies.findOne({
+    where: {
+      genre: genre
+    }
+  });
+  return data
+}
+
+// TEST getMovieById
+// getMovieById('war')
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err))
