@@ -15,7 +15,6 @@
     "pg pg-hstore",
     "uuid",
     "dotenv"
-
   ],
   "author": "jesuschock93",
   "license": "ISC",

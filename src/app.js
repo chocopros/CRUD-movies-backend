@@ -1,6 +1,16 @@
+
+/******************************ALL IMPORTS*************************************/
 //import express
 const express = require('express')
+// import my initModels relations tables
+const initModels = require('./models/initModels')
+// import my sensible info
+const config = require('./config')
+//import Routes
+const moviesRouter = require('./movies/movies.router')
 
+
+/********************************** INIT******************************************* */
 //initialize express
 const app = express()
 
@@ -9,14 +19,18 @@ app.use(express.json())
 
 //Ability req in Home
 app.get('/', (req, res) => {
-  res.status(200).json({message: "Server Started now!!!"})
+  res.status(200).json({
+    message: "Server Started now!!!",
+    AllMovies: 'http://127.0.0.1:9000/movies',
+    CreateBy: 'Jesus Arechider'
+
+  })
 })
 
-// import my initModels relations tables
-const initModels = require('./models/initModels')
+//Ability Routes
+app.use('/movies', moviesRouter) // <-- asignament prefije
 
-// import my sensible info
-const config = require('./config')
+
 
 /********************** DATABASE ********************************/
 //* First Db Authetication y next process in order Sycronyzate tables
@@ -37,7 +51,6 @@ initModels()
 
 
 
- 
 /********************** LISTEN SERVER *****************************/ 
 //start listing
 app.listen(config.port, () => {
