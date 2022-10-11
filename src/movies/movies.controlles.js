@@ -36,7 +36,7 @@ const getMovieById = async (id) => {
 };
 
 // TEST getMovieById
-// getMovieById('war')
+// getMovieById('92d606a4-8380-4c1c-972a-15a42bccc')
 //   .then(res => console.log(res))
 //   .catch(err => console.log(err))
 

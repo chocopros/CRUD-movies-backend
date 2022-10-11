@@ -7,10 +7,14 @@ const { createMovie, getAllMovies, getMovieById, editMovie } = require('./movies
 const getAMovies = (req, res) => {
   getAllMovies()
     .then(data => {
-      res.status(200).json({
-        GoHome: 'http://127.0.0.1:9000/',
-        result: data
-      })
+      if(data){
+        res.status(200).json({
+          GoHome: 'http://127.0.0.1:9000/',
+          result: data
+        })
+      } else {
+        res.status(400).json({ message:' Error GET all Movies' })
+      }
     })
     .catch(err => {
       res.status(400).json({ message: err.message })
@@ -24,10 +28,23 @@ const getById = (req, res) => {
 
   getMovieById(id)
     .then(data => {
-      res.status(200).json(data)
+      if(data){
+        res.status(200).json({
+          Movies: 'http://127.0.0.1:9000/movies',
+          result: data
+        })
+      } else {
+        res.status(404).json({
+          pageMovies: 'http://127.0.0.1:9000/movies',
+          message: 'Invalid ID'
+        })
+      }
     })
     .catch(err => {
-      res.status(404).json({ message: err.message })
+      res.status(404).json({ 
+      pageMovies: 'http://127.0.0.1:9000/movies',
+      message: err.message
+    })
     })
 };
 
@@ -52,7 +69,7 @@ const postMovie = (req, res) => {
 
 
 
-// PUT MOVIES
+// PATCH MOVIES
 //>>Parcial Modification
 const patchMovie = (req, res) => {
 
@@ -60,8 +77,13 @@ const patchMovie = (req, res) => {
   const { name, genre, duration, releaseDate } = req.body;
 
   editMovie(id, {name, genre, duration, releaseDate })
-    .then(() => {
-      res.status(200).json({message: `Movie with ID:${id} has modificate`})
+    .then((response) => {
+      if (response[0]) {
+        res.status(200).json({message: `Movie with ID:${id} has modificate`})
+      } else {
+        res.status(400).json({message: 'Invalid ID'})
+      }
+  
     })
     .catch(err => {
       res.status(400).json({message: err.message})

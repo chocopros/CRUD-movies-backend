@@ -28,10 +28,10 @@ router.post('/', moviesServices.postMovie) //? /movies
 
 
 /************ PUT *****************/
-router.patch('/:id', moviesServices.patchMovie) //? /movies
+//router.put('/:id') //? /movies
 
 /************ PATCH *****************/
-//router.patch('/:id') //? /movies
+router.patch('/:id', moviesServices.patchMovie) //? /movies
 
 /************ DELETE *****************/
 //router.delete('/:id') //? /movies
