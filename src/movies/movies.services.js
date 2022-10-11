@@ -1,6 +1,6 @@
 //import Fuctions of Controllers
 const { response } = require('express');
-const { createMovie, getAllMovies, getMovieById, editMovie } = require('./movies.controlles')
+const { createMovie, getAllMovies, getMovieById, editMovie, deleteMovieById } = require('./movies.controlles')
 
 
 //  GET ALL MOVIES 
@@ -78,7 +78,8 @@ const patchMovie = (req, res) => {
 
   editMovie(id, {name, genre, duration, releaseDate })
     .then((response) => {
-      if (response[0]) {
+      
+      if (response[0]) { //El response como respuesta es una arreglo
         res.status(200).json({message: `Movie with ID:${id} has modificate`})
       } else {
         res.status(400).json({message: 'Invalid ID'})
@@ -91,9 +92,39 @@ const patchMovie = (req, res) => {
   
 };
 
+
+
+// DELETE MOVIE
+const deleteMovie = (req, res) => {
+
+  const id = req.params.id;
+
+  deleteMovieById(id)
+    .then(response => {
+      if(response){
+        res.status(200).json({message: `Movie with ID:${id} has DELETE`})
+      } else {
+        res.status(400).json({message: 'Invalid ID'})
+      }
+        
+    }).catch(err => {
+      res.status(400).json({message: err.message})
+    })
+
+};
+
+
+//EXAMPLE DESECTRUTURE
+
+// youtube.com/videos/57
+// youtube.com/videos/:video_id/coments/:comment_id
+// const {video_id, comment_id} = req.params
+
+
 module.exports = {
   getAMovies,
   getById,
   postMovie,
-  patchMovie
+  patchMovie,
+  deleteMovie
 };

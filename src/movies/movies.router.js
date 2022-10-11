@@ -34,6 +34,6 @@ router.post('/', moviesServices.postMovie) //? /movies
 router.patch('/:id', moviesServices.patchMovie) //? /movies
 
 /************ DELETE *****************/
-//router.delete('/:id') //? /movies
+router.delete('/:id', moviesServices.deleteMovie) //? /movies
 
 module.exports = router
