@@ -10,7 +10,7 @@ const config = require('./config')
 const moviesRouter = require('./movies/movies.router')
 
 
-/********************************** INIT******************************************* */
+/********************************** INIT  ******************************************* */
 //initialize express
 const app = express()
 

@@ -102,7 +102,7 @@ const deleteMovie = (req, res) => {
   deleteMovieById(id)
     .then(response => {
       if(response){
-        res.status(200).json({message: `Movie with ID:${id} has DELETE`})
+        res.status(204).json({message: `Movie with ID:${id} has DELETE`}) //normalmente el json vacio .json()
       } else {
         res.status(400).json({message: 'Invalid ID'})
       }
