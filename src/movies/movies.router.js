@@ -28,7 +28,7 @@ router.post('/', moviesServices.postMovie) //? /movies
 
 
 /************ PUT *****************/
-//router.put('/:id') //? /movies
+router.put('/:id',moviesServices.putMovie) //? /movies
 
 /************ PATCH *****************/
 router.patch('/:id', moviesServices.patchMovie) //? /movies

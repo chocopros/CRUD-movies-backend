@@ -71,7 +71,7 @@ const createMovie = async (data) => {
 
 
 
-//**************************** >>PUT FILM<< *****************************/
+//**************************** >>PACTH FILM<< *****************************/
 
 const editMovie =  async (id, data) => {
   const response  = await Movies.update (data, {

@@ -82,7 +82,7 @@ const patchMovie = (req, res) => {
       if (response[0]) { //El response como respuesta es una arreglo
         res.status(200).json({message: `Movie with ID:${id} has modificate`})
       } else {
-        res.status(400).json({message: 'Invalid ID'})
+        res.status(404).json({message: 'Invalid ID'})
       }
   
     })
@@ -91,6 +91,36 @@ const patchMovie = (req, res) => {
     })
   
 };
+
+
+
+// PUT MOVIES
+const putMovie = ( req, res ) => {
+  const id = req.params.id;
+  const { name, genre, duration, releaseDate } = req.body
+
+  if ( name && genre && duration && releaseDate ) {
+    editMovie(id, { name, genre, duration, releaseDate })
+      .then( response => {
+        if (response[0]) { //El response como respuesta es una arreglo
+          res.status(200).json({message: `Movie with ID:${id} has modificate`})
+        } else {
+          res.status(404).json({message: 'Invalid ID'})
+        }
+      })
+      .catch( err => {
+        res.status(400).json({message: err.message})
+      })
+  } else {
+    res.status(400).json({message: 'Missing data', fields: {
+      name: 'String',
+      genre: 'String',
+      duration: 'integer',
+      releaseDate: 'YYYY/MM/DD'
+    }})
+  }
+
+}
 
 
 
@@ -126,5 +156,6 @@ module.exports = {
   getById,
   postMovie,
   patchMovie,
+  putMovie,
   deleteMovie
 };
